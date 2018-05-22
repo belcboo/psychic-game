@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Psychic Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <h1>The Psychic Game</h1>
+
+    <p>Guess what letter im thinking</p>
+
+
+    <script type="text/javascript">
+
+        /* Declaring variables */
+
+        var wins = 0; /* Stores wins of the user */
+        var loses = 0; /* Store loses of user/wins of the system */
+        var abc = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; /* Store the vales that the system will pick random */
+        var guess = 0;
+        
+        /* This function will be triggered each time the user press a key */
+        document.onkeyup = function (event) {
+
+            guess++; /* Increases the counter to validate winner */
+            console.log("The actual counter is: " + guess);
+
+            var userInput = event.key.toLowerCase(); /* Assign the key entered by user as value and convert it to lowercase */
+            console.log("The Value of userInput is: " + userInput);
+
+            var pyschic = abc[Math.floor(Math.random() * abc.length)]; /* Assign a random value to psychic */
+            console.log("The Value of psychic is: " + pyschic);
+
+            if (pyschic === userInput) { /* Validate if user wins */
+                wins++;
+                guess=0;
+                console.log("User won: wins: " + wins + " loses: " + loses + " Counter " + guess);
+            }
+            else if (guess === 9) { /* Validate if user lose */
+                loses++;
+                guess = 0;
+                console.log("User lost: wins: " + wins + " loses: " + loses + " Counter " + guess);
+            }
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
