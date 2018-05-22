@@ -12,11 +12,12 @@
 
     <h1>The Psychic Game</h1>
 
-    <p>Guess what letter im thinking</p>
+    <h3>Guess what letter im thinking</h3>
     
     <p id="wins"> Wins: 0</p>
     <p id="losses">Loses: 0</p>
     <p id="guesses"> Guesses Left: 9</p>
+    <p id="chain">Your guesses so far:</p>
 
     <script type="text/javascript">
 
@@ -25,32 +26,41 @@
         var wins = 0; /* Stores wins of the user */
         var losses = 0; /* Store loses of user/wins of the system */
         var abc = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; /* Store the vales that the system will pick random */
-        var guess = 9;
+        var guess = 9; /* Counter set to 9, each run will substrac 1 */
+        var chain =""; /* Chain to store the letters typed by user */
         
         /* This function will be triggered each time the user press a key */
         document.onkeyup = function (event) {
 
             document.getElementById("guesses").innerHTML = "Guesses Left: " + guess; 
             guess = guess - 1; /* Increases the counter to validate winner */
-            console.log("The actual counter is: " + guess);
+            console.log("The actual counter is: " + guess); /* Console Debug */
+            chain = chain + event.key + ", "; /* Add's letters entered by user to create a chain and display user guesses */
+            console.log("Chain = " + chain) /* Console Debug */
+            document.getElementById("chain").innerHTML = "Your guesses so far: " + chain; /* Display on website the user guesses */
 
             var userInput = event.key.toLowerCase(); /* Assign the key entered by user as value and convert it to lowercase */
-            console.log("The Value of userInput is: " + userInput);
+            
+            console.log("The Value of userInput is: " + userInput); /* Console Debug */
 
             var pyschic = abc[Math.floor(Math.random() * abc.length)]; /* Assign a random value to psychic */
-            console.log("The Value of psychic is: " + pyschic);
+            console.log("The Value of psychic is: " + pyschic); /* Console Debug */
 
-            if (pyschic === userInput) { /* Validate if user wins */
-                wins++;
-                guess=9;
-                document.getElementById("wins").innerHTML = "Wins: " + wins;
-                console.log("User won: wins: " + wins + " loses: " + losses + " Counter " + guess);
+            if (pyschic === userInput) { /* If user guesses the system random letter then: */
+                wins++; /* Adds one to var wins */
+                guess=9; /* Reset counter to 9 */
+                chain = ""; /* Reset chain to "" */
+                document.getElementById("chain").innerHTML = "Your guesses so far: " + chain; /* Print chain without any chars */
+                document.getElementById("wins").innerHTML = "Wins: " + wins; /* Print wins displaying the new value */
+                console.log("User won: wins: " + wins + " loses: " + losses + " Counter " + guess); /* Console Debug */
             }
             else if (guess === 0) { /* Validate if user lose */
-                losses++;
-                guess = 9;
-                document.getElementById("losses").innerHTML = "Losses: " + losses;
-                console.log("User lost: wins: " + wins + " loses: " + losses + " Counter " + guess);
+                losses++; /* Adds one to var losses */
+                guess = 9; /* Reset counter to 9 */
+                chain = ""; /* Reset chain to "" */
+                document.getElementById("chain").innerHTML = "Your guesses so far: " + chain; /* Print chain without any chars */
+                document.getElementById("losses").innerHTML = "Losses: " + losses;  /* Print wins displaying the new value */
+                console.log("User lost: wins: " + wins + " loses: " + losses + " Counter " + guess); /* Console Debug */
             }
         }
 
