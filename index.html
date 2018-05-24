@@ -33,7 +33,7 @@
         document.onkeyup = function (event) {
 
             document.getElementById("guesses").innerHTML = "Guesses Left: " + guess; 
-            guess = guess - 1; /* Increases the counter to validate winner */
+            guess = guess - 1; /* Decreases the counter to validate winner */
             console.log("The actual counter is: " + guess); /* Console Debug */
             chain = chain + event.key + ", "; /* Add's letters entered by user to create a chain and display user guesses */
             console.log("Chain = " + chain) /* Console Debug */
@@ -52,6 +52,7 @@
                 chain = ""; /* Reset chain to "" */
                 document.getElementById("chain").innerHTML = "Your guesses so far: " + chain; /* Print chain without any chars */
                 document.getElementById("wins").innerHTML = "Wins: " + wins; /* Print wins displaying the new value */
+                document.getElementById("guesses").innerHTML = "Guesses Left: " + guess;
                 console.log("User won: wins: " + wins + " loses: " + losses + " Counter " + guess); /* Console Debug */
             }
             else if (guess === 0) { /* Validate if user lose */
@@ -60,11 +61,11 @@
                 chain = ""; /* Reset chain to "" */
                 document.getElementById("chain").innerHTML = "Your guesses so far: " + chain; /* Print chain without any chars */
                 document.getElementById("losses").innerHTML = "Losses: " + losses;  /* Print wins displaying the new value */
+                document.getElementById("guesses").innerHTML = "Guesses Left: " + guess;
                 console.log("User lost: wins: " + wins + " loses: " + losses + " Counter " + guess); /* Console Debug */
             }
         }
-
-
+        
     </script>
 
 
