@@ -6,6 +6,7 @@ var abc = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
 var guess = 9; // Counter set to 9, each run will substrac 1
 var chain = ""; // Chain to store the letters typed by user
 
+//Function modifies the text inside the html
 function status() {
     document.getElementById("wins").innerHTML = "Wins: " + wins; // Print wins displaying the new value
     document.getElementById("losses").innerHTML = "Losses: " + losses;  // Print wins displaying the new value 
@@ -13,6 +14,7 @@ function status() {
     document.getElementById("chain").innerHTML = "Your guesses so far: " + chain; // Print chain without any chars 
 }
 
+//Function reset the values to start the game again
 function reset() {
     guess = 9; // Reset counter to 9 
     chain = ""; // Reset chain to ""  
@@ -26,10 +28,10 @@ document.onkeyup = function (event) {
     }
     else {
         var userInput = event.key.toLowerCase(); // Assign the key entered by user as value and convert it to lowercase
-        var pyschic = abc[Math.floor(Math.random() * abc.length)]; /* Assign a random value to psychic */
+        var pyschic = abc[Math.floor(Math.random() * abc.length)]; // Assign a random value to psychic 
 
         guess -= 1; // Decreases the counter to validate winner
-        chain = chain + event.key.toLowerCase() + ", "; // Add's letters entered by user to create a chain and display user guesses 
+        chain += userInput + ", "; // Add's letters entered by user to create a chain and display user guesses 
         status();
 
         if (pyschic === userInput) { // If user guesses the system random letter then: 
