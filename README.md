@@ -3,6 +3,10 @@
 
 <h4>Basic project on Java Script realized as homework #3.</h4>
 
+You can access to the game using the following link:
+
+<a href="https://belcboo.github.io/psychic-game/" target="_blank">Psychic Game</a>
+
 <p>This is a game that requires the user to type letters from A to Z to try to gess the value assigned randomly to the system. If the user guess before 9 attemps the user wins and get 1 point, if the user is unable to guess after 9 attemps the system wins and 1 point is added to losses.</p>
 
 <p>The html is pretty basic, no CSS was used. All the text is updated using the <a href=https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML  target="_blank">innerHTLM</a> function in js. A function was created at the beggining, this function updates all the lines of text in html every time is invoqued.</p>
