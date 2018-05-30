@@ -24,8 +24,8 @@ function reset() {
 document.onkeyup = function (event) {
 
     if (event.keyCode < 65 || event.keyCode > 90)  // Validates that chars entered are in the random values list, if not alert the user.
-        alert("The key you pressed is not valid. Try Again.");
-        
+        alert("Only letters a-z are valid in the game. Try Again.");
+
     else {
         var userInput = event.key.toLowerCase(); // Assign the key entered by user as value and convert it to lowercase
         var pyschic = abc[Math.floor(Math.random() * abc.length)]; // Assign a random value to psychic 
